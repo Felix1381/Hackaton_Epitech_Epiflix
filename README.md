@@ -41,11 +41,11 @@ $ https://nodejs.org/en/download/package-manager
 
 #clone this repository
 
-$ git@github.com:cherifdine/Projets-MVVM-Framework-Vue-Js.git
+$ git@github.com:cherifdine/Hackaton_Epitech_Epiflix.git
 
 #Go into the repository
 
-$ Projets-MVVM-Framework-Vue-Js.git:(main) cd ratrapage-mvvm
+$Hackaton_Epitech_Epiflix.git:(main) cd ratrapage-mvvm
 
 $ ratrapage-mvvm git:(main) code .
 
