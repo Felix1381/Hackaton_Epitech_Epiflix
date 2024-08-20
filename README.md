@@ -1,6 +1,6 @@
 # Hackaton_Epitech_Epiflix
 
-Netfilm is a web application that allows  users to see Fims prrogmmes and annocment in Internet.
+Epiflix is a web application that allows  users to see Fims prrogmmes and annocment in Internet.
 The aim of the project was to learn how to store data in localStorage and implement an interface from which we can act on the localStorage  that will be our backend.this project enabled us to delve deeper into localStorage use with which we created our peace and vue.js the framework with which we created our user interface.
 
 
@@ -64,6 +64,7 @@ $ ratrapage-mvvm git:(main) npm run serve
 
  - [Awesome README](https://github.com/matiassingers/awesome-readme)
  - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+ - [TMDb API Documentation](https://www.themoviedb.org/settings/import-list)
 
 ## Authors
 - [@Bonkey FIAGNIGBE](bonkey.fiagnigbe@epitech.eu)
