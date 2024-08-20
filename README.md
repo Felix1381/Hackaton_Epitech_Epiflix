@@ -6,15 +6,17 @@ The aim of the project was to learn how to store data in localStorage and implem
 
 ## lang : french
 ## Tech Stack
-technologies are frameworks, css libraries, time manager.
+technologies are frameworks, css libraries, time manager and communication tools
 
-**Client:** ```Vue.js```,`` Tailwind css``
+**Client:** ```Vue.js```,`` Taildwin``
 
-**Server:** ```LocalStorage```
+**Server:** ```Laravel```,`` Tailwind``
 
 **time manager:** ``trello,``
 
+**three communication tools :** `teams` , `whatsapp`, `outlook`
 **Gitflow**
+
 
 
 
@@ -53,12 +55,19 @@ $ ratrapage-mvvm git:(main) code .
 #Terminal
 
 #Do Install dependencies
+
 $ ratrapage-mvvm git:(main) npm install
+
 #Run the app
+
 $ ratrapage-mvvm git:(main) npm run serve
+
 # Then click on localhost ip to vue the web site
- - Local:   http://localhost:8080/ 
+
+ - Local:   http://localhost:8080/
+
   - Network: http://"network ip":8080/
+
 ```
 ## Acknowledgements
 
