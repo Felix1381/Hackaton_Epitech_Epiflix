@@ -10,11 +10,12 @@ technologies are frameworks, css libraries, time manager and communication tools
 
 **Client:** ```Vue.js```,`` Taildwin``
 
-**Server:** ```Laravel```,`` Tailwind``
+**Server:** ```TMDb API ```
 
 **time manager:** ``trello,``
 
 **three communication tools :** `teams` , `whatsapp`, `outlook`
+
 **Gitflow**
 
 
