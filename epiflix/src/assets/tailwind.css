@@ -3,3 +3,26 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer components {
+
+	.border-grey {
+		border-color: rgb(34 34 34);
+	}
+	.footer-grey {
+		color: rgb(117 117 117);
+	}
+	footer a {
+		@apply hover:underline;
+	}
+	footer li {
+		@apply py-1.5;
+        font-size: large;
+	}
+	.nav-bg {
+		background: linear-gradient(180deg, #00000059 70%, transparent);
+	}
+	header::-webkit-scrollbar{
+	display: none;
+	}
+}
