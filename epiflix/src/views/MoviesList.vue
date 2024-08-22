@@ -1,6 +1,8 @@
 <template>
   <div class="px-10 py-5 bg-black movies">
-    <img src="../assets/Logo.webp" alt="" srcset="" />
+    <button @click="this.$router.push('/')">
+      <img src="../assets/Logo.webp" alt="" srcset="" />
+    </button>
     <div class="mt-10">
       <form class="max-w-md mx-auto">
         <div class="flex">

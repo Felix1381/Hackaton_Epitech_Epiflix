@@ -1,12 +1,12 @@
 <template>
-  <div class="bg-black text-white">
+  <div class="text-white bg-black">
     <!-- Navbar and Hero -->
     <header
       class="border-b-8 border-grey bg-black/50 bg-blend-color bg-cover bg-[url('../assets/img/movie-bg.jpg')] h-[100vh] overflow-y-scroll"
     >
       <!-- Navbar -->
       <nav
-        class="flex flex-wrap nav-bg justify-around gap-y-1 sm:justify-between py-1 px-1 sm:px-8 items-center"
+        class="flex flex-wrap items-center justify-around px-1 py-1 nav-bg gap-y-1 sm:justify-between sm:px-8"
       >
         <div>
           <img
@@ -19,6 +19,7 @@
         <!-- Buttons -->
         <div class="flex gap-x-4">
           <button
+            @click="this.$router.push('/movies')"
             type="button"
             class="focus:outline-none text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
           >
@@ -28,14 +29,14 @@
       </nav>
 
       <!-- Hero Section -->
-      <section class="text-center py-8 sm:py-24 px-7 sm:px-10 lg:px-40">
-        <h1 class="font-bold text-3xl sm:text-5xl py-2">
+      <section class="py-8 text-center sm:py-24 px-7 sm:px-10 lg:px-40">
+        <h1 class="py-2 text-3xl font-bold sm:text-5xl">
           Films, émissions de télévision et plus encore en illimité
         </h1>
-        <h2 class="mt-10 text-xl sm:text-2xl py-1 font-semibold">
+        <h2 class="py-1 mt-10 text-xl font-semibold sm:text-2xl">
           La magie du cinéma, à portée de clic
         </h2>
-        <h2 class="mt-5 text-xl sm:text-2xl py-1 font-semibold">
+        <h2 class="py-1 mt-5 text-xl font-semibold sm:text-2xl">
           Epiflix : Votre passeport pour un univers illimité de divertissement
         </h2>
       </section>
