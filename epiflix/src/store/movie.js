@@ -3,6 +3,10 @@ import { defineStore } from "pinia";
 export const useMovieStore = defineStore("movie", {
   state: () => ({
     movies: [],
+    moviesPopular: [],
+    moviesTopRated: [],
+    moviesRecents: [],
+    moviesEpiflix: [],
     moviesByGenre: [],
     genres: [],
     detailId: [],
@@ -29,6 +33,60 @@ export const useMovieStore = defineStore("movie", {
         .then((data) => {
           (this.movies = data.results),
             (console.log("Fetch all movies"), console.log(this.movies));
+        });
+      // .catch((error) => console.log(error));
+      // .catch((error) => (this.message = error.message));
+    },
+    getTopRated() {
+      const requestOptions = {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + this.token,
+          "content-type": "application/json",
+        },
+      };
+      fetch(`${this.apiUrl}/movie/top_rated?language=fr-FR`, requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          (this.moviesTopRated = data.results),
+            (console.log("Fetch TopRated movies"),
+            console.log(this.moviesTopRated));
+        });
+      // .catch((error) => console.log(error));
+      // .catch((error) => (this.message = error.message));
+    },
+    getPopular() {
+      const requestOptions = {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + this.token,
+          "content-type": "application/json",
+        },
+      };
+      fetch(`${this.apiUrl}/movie/popular?language=fr-FR`, requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          (this.moviesPopular = data.results),
+            (console.log("Fetch TopRated movies"),
+            console.log(this.moviesPopular));
+        });
+      // .catch((error) => console.log(error));
+      // .catch((error) => (this.message = error.message));
+    },
+    getTrending() {
+      const requestOptions = {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + this.token,
+          "content-type": "application/json",
+        },
+      };
+      fetch(`${this.apiUrl}/trending/all/week?language=fr-FR`, requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          (this.moviesRecents = data.results),
+            (console.log("Fetch TopRated movies"),
+            console.log(this.moviesRecents));
         });
       // .catch((error) => console.log(error));
       // .catch((error) => (this.message = error.message));
