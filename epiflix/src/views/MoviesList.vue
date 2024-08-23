@@ -4,7 +4,7 @@
       <img src="../assets/Logo.webp" alt="" srcset="" />
     </button>
     <div class="mt-10">
-      <form class="max-w-md mx-auto">
+      <form class="max-w-md mx-auto" @submit.prevent>
         <div class="flex">
           <label
             for="location-search"
@@ -20,12 +20,15 @@
             <input
               type="search"
               id="location-search"
-              class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 dark:placeholder-gray-400 dark:text-white"
+              class="block p-2.5 w-full z-20 text-sm bg-gray-50 dark:placeholder-gray-400 text-black"
               placeholder="Rechercher un film de votre choix"
+              v-model="querySearch"
+              @input="movieStore.searchMovieByName(this.querySearch)"
               required
             />
             <button
               type="submit"
+              @click="movieStore.searchMovieByName(this.querySearch)"
               class="absolute top-0 end-0 h-full p-2.5 text-sm font-medium text-white hover:bg-red-800 bg-red-600"
             >
               <div class="flex items-center justify-center">
@@ -55,22 +58,23 @@
         Retrouver ici la liste de tous les genres de films disponibles
       </h1>
     </div>
-    <div>
+    <div class="flex flex-wrap items-center justify-center">
       <button
         v-for="(genre, i) in movieStore.genres"
         :key="i"
         @click="movieStore.getAllMoviesByGenre(genre.id)"
         type="button"
         class="py-3.5 mb-2 text-sm font-medium text-white border-collapse border border-[red] bg-transparent rounded-lg px-16 me-2 my-2"
+        :class="{
+          'py-3.5 mb-2 text-sm font-medium border-collapse text-white border border-[red] rounded-lg px-16 me-2 my-2': true,
+          'bg-red-700 text-white': movieStore.selectedGenre === genre.id, // Style pour le genre sélectionné
+          'bg-transparent': movieStore.selectedGenre !== genre.id, // Style pour les autres genres
+        }"
       >
         {{ genre.name }}
       </button>
     </div>
     <div class="flex flex-wrap justify-center gap-8 py-11">
-      <!-- <div class="">
-          <img :src="`${this.imagePath}${movie.backdrop_path}`" alt="" />
-        </div> -->
-
       <div
         v-for="(movie, i) in movieStore.moviesByGenre"
         :key="i"
@@ -98,7 +102,7 @@
           </p>
           <a
             href="#"
-            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-red-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none dark:bg-red-600"
           >
             Lire plus
             <svg
@@ -120,6 +124,26 @@
         </div>
       </div>
     </div>
+    <div class="flex items-end justify-end gap-6 pb-10 pr-28">
+      <button
+        @click="fetchMovies(movieStore.currentPage - 1)"
+        :disabled="movieStore.currentPage === 1"
+        class="text-white"
+      >
+        Précédent
+      </button>
+      <p class="font-bold text-white">
+        {{ movieStore.currentPage }} sur {{ movieStore.totalPages }}
+      </p>
+
+      <button
+        class="text-white"
+        @click="fetchMovies(movieStore.currentPage + 1)"
+        :disabled="movieStore.currentPage === movieStore.totalPages"
+      >
+        Suivant
+      </button>
+    </div>
   </div>
 </template>
 
@@ -131,10 +155,17 @@ export default {
   data() {
     return {
       imagePath: "https://image.tmdb.org/t/p/w500",
+      querySearch: "",
     };
   },
   setup() {
     const movieStore = useMovieStore();
+
+    const fetchMovies = (page) => {
+      movieStore.getAllMoviesByGenre(movieStore.selectedGenre, page);
+      console.log("page");
+      console.log(page);
+    };
     onMounted(() => {
       movieStore.getAllMovies();
       movieStore.getAllGenres();
@@ -142,6 +173,7 @@ export default {
     });
     return {
       movieStore,
+      fetchMovies,
     };
   },
 };

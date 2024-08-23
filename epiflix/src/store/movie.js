@@ -4,17 +4,15 @@ export const useMovieStore = defineStore("movie", {
   state: () => ({
     movies: [],
     moviesByGenre: [],
-
     genres: [],
     apiUrl: "https://api.themoviedb.org/3",
     token:
       "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZDk2ODJkNTlhMWI0ZTczNjgwZDlmOTk2NzhiMmFhMCIsIm5iZiI6MTcyNDMzNDEzNC41ODg4MzQsInN1YiI6IjY2MzhjNTZjMWI3Mjk0MDEyNDM3OTA2MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rTEhGwRzBktsc8iV3zhbM4LDNj4cRPXmBnQVvm4Kscw",
     currentPage: 1,
     totalPages: 1,
+    selectedGenre: 28,
   }),
-  getters: {
-    double: (state) => state.count * 2,
-  },
+  getters: {},
   actions: {
     getAllMovies() {
       const requestOptions = {
@@ -67,9 +65,37 @@ export const useMovieStore = defineStore("movie", {
         .then((response) => response.json())
         .then((data) => {
           (this.moviesByGenre = data.results),
+            console.log("data"),
+            // console.log(data),
             (this.currentPage = data.page),
-            (console.log("Fetch all movies by genre"),
-            console.log(this.moviesByGenre));
+            console.log(this.currentPage),
+            (this.totalPages = data.total_pages),
+            (this.selectedGenre = genreId),
+            (console.log("Fetch count all movies by genre"),
+            console.log(this.selectedGenre, console.log(this.currentPage)));
+        })
+        .catch((error) => console.log(error))
+        .catch((error) => (this.message = error.message));
+    },
+
+    searchMovieByName(title, page = 1) {
+      const requestOptions = {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + this.token,
+          "content-type": "application/json",
+        },
+      };
+
+      fetch(
+        `${this.apiUrl}/search/movie?language=fr-FR&sort_by=popularity.desc&query=${title}&page=${page}`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          (this.moviesByGenre = data.results),
+            (this.currentPage = data.page),
+            (console.log("Get on genres"), console.log(this.moviesByGenre));
         })
         .catch((error) => console.log(error))
         .catch((error) => (this.message = error.message));
