@@ -5,12 +5,14 @@ export const useMovieStore = defineStore("movie", {
     movies: [],
     moviesByGenre: [],
     genres: [],
+    detailId: [],
     apiUrl: "https://api.themoviedb.org/3",
     token:
       "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZDk2ODJkNTlhMWI0ZTczNjgwZDlmOTk2NzhiMmFhMCIsIm5iZiI6MTcyNDMzNDEzNC41ODg4MzQsInN1YiI6IjY2MzhjNTZjMWI3Mjk0MDEyNDM3OTA2MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rTEhGwRzBktsc8iV3zhbM4LDNj4cRPXmBnQVvm4Kscw",
     currentPage: 1,
     totalPages: 1,
     selectedGenre: 28,
+    movie: [],
   }),
   getters: {},
   actions: {
@@ -77,7 +79,6 @@ export const useMovieStore = defineStore("movie", {
         .catch((error) => console.log(error))
         .catch((error) => (this.message = error.message));
     },
-
     searchMovieByName(title, page = 1) {
       const requestOptions = {
         method: "GET",
@@ -96,6 +97,29 @@ export const useMovieStore = defineStore("movie", {
           (this.moviesByGenre = data.results),
             (this.currentPage = data.page),
             (console.log("Get on genres"), console.log(this.moviesByGenre));
+        })
+        .catch((error) => console.log(error))
+        .catch((error) => (this.message = error.message));
+    },
+
+    getMoviesDetail(movie_Id) {
+      const requestOptions = {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + this.token,
+          "content-type": "application/json",
+        },
+      };
+      fetch(
+        `${this.apiUrl}/movie/${movie_Id}?language=fr-FR&sort_by=popularity.desc`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          (this.movie = data),
+            // console.log(data),
+            console.log("Fetch "),
+            console.log(this.movie);
         })
         .catch((error) => console.log(error))
         .catch((error) => (this.message = error.message));

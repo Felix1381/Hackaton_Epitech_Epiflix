@@ -1,26 +1,54 @@
 <template>
-  <div class="bg-black w-screen h-screen">
-    <div class="flex justify-center p-24">
-      <video class="w-1/2 border rounded-2xl" controls>
-        <source src="/home/cherif/Videos" type="video/mp4" />
-        <!-- <source src="/home/cherif/Videos" type="video/ogg" /> -->
+  <div class="bg-black-500 w-screen h-screen">
+    <router-link :to="{ path: '/' }" custom v-slot="{ navigate }">
+      <a href=""
+        ><img class="p-12" src="../assets/Logo.webp" alt="" @click="navigate"
+      /></a>
+    </router-link>
+    <div class="flex justify-center p-16 gap-8">
+      <img
+        width="920"
+        height="450"
+        class="rounded-t-lg"
+        :src="`${this.imagePath}${movieStore.movie.backdrop_path}`"
+        alt=""
+      />
+      <!-- <iframe
+        class="border rounded-2xl"
+        width="920"
+        height="450"
+        src="https://www.youtube.com/embed/nsSV5V4p2E4"
+      >
+      </iframe> -->
+      <!-- <video src="https://youtu.be/s0UmdrNwEy8?si=dQ_CSUxeJco3Q_uF">LOM</video>
+      <video
+        class="w-1/2 border rounded-2xl"
+        controls
+        src="https://youtu.be/s0UmdrNwEy8?si=dQ_CSUxeJco3Q_uF"
+      >
+        <source type="video/mp4" />
+        <source src="/home/cherif/Videos" type="video/ogg" />
         Your browser does not support HTML video.
-      </video>
+      </video> -->
 
       <div class="flex flex-col justify-between p-4 leading-normal w-1/2">
         <h5
-          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+          class="mb-2 text-5xl font-bold tracking-tight text-gray-900 dark:text-white"
         >
-          La Reine du Sud
+          {{ movieStore.movie.title }}
         </h5>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          La Reine du Sud est un thriller dramatique inspiré du roman de Arturo
+        <p class="mb-3 text-white-700 dark:text-white text-xl">
+          <!-- La Reine du Sud est un thriller dramatique inspiré du roman de Arturo
           Pérez-Reverte. L'histoire suit Teresa Mendoza, une jeune femme
           mexicaine qui, après la mort de son compagnon impliqué dans le trafic
           de drogue, se voit forcée de fuir vers les États-Unis. Là, elle
           utilise son intelligence et son audace pour gravir les échelons du
           monde du crime et devenir l'une des figures les plus redoutées et
-          respectées du narcotrafic.
+          respectées du narcotrafic. -->
+          {{ movieStore.movie.overview }}
+        </p>
+        <p class="mb-3 text-white-700 dark:text-white text-xl">
+          Date de sortie: {{ movieStore.movie.release_date }}
         </p>
         <svg
           width="157"
@@ -53,7 +81,9 @@
         </svg>
       </div>
     </div>
-    <p class="text-white mt-4 text-2xl">Quelques avis de nos utilisateurs</p>
+    <p class="flex justify-center text-white m-4 text-2xl">
+      Quelques avis de nos utilisateurs
+    </p>
     <div class="flex justify-center m-2">
       <a
         href="#"
@@ -107,11 +137,39 @@
   </div>
 </template>
 <script>
+import { useMovieStore } from "@/store/movie";
+import { onMounted } from "vue";
+import { useRoute } from "vue-router";
 import DetailPageView from "@/views/DetaiPageView.vue";
 export default {
   name: "DetaiPageView",
   component: {
     DetailPageView,
   },
+  data: () => ({
+    imagePath: "https://image.tmdb.org/t/p/w500",
+  }),
+  setup() {
+    const movieStore = useMovieStore();
+    const route = useRoute();
+
+    onMounted(() => {
+      movieStore.getMoviesDetail(route.params.id);
+    });
+    return {
+      movieStore,
+    };
+  },
+  // methods: {
+  //   showPost(movietId) {
+  //     // Simple GET request using fetch
+  //     fetch(`https://api.themoviedb.org/3/movie/${movietId}`)
+  //       .then((response) => response.json())
+  //       .then((data) => (this.movie = data));
+  //   },
+  // },
+  // mounted() {
+  //   this.showPost(this.$route.params.id);
+  //},
 };
 </script>

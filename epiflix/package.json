@@ -11,7 +11,7 @@
   "dependencies": {
     "autoprefixer": "^10",
     "core-js": "^3.8.3",
-    "pinia": "^2.1.4",
+    "pinia": "^2.2.2",
     "postcss": "^8",
     "tailwind": "^4.0.0",
     "tailwindcss": "^3",
