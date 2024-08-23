@@ -9,19 +9,19 @@
         <div class="flex">
           <label
             for="location-search"
-            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+            class="mb-2 text-sm font-medium text-white sr-only"
             >Rechercher un film</label
           >
 
           <div
             id="dropdown-search-city"
-            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-white"
+            class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44"
           ></div>
           <div class="relative w-full">
             <input
               type="search"
               id="location-search"
-              class="block p-2.5 w-full z-20 text-sm bg-gray-50 dark:placeholder-gray-400 text-black"
+              class="block p-2.5 w-full z-20 text-sm bg-gray-50 placeholder-gray-400 text-black"
               placeholder="Rechercher un film de votre choix"
               v-model="querySearch"
               @input="movieStore.searchMovieByName(this.querySearch)"
@@ -91,19 +91,17 @@
         <div v-if="movie.backdrop_path" class="p-5">
           <a href="#">
             <h5
-              class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-1"
+              class="mb-2 text-2xl font-bold tracking-tight text-white line-clamp-1"
             >
               {{ movie.title }}
             </h5>
           </a>
-          <p
-            class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-2"
-          >
+          <p class="mb-3 font-normal text-gray-400 line-clamp-2">
             {{ movie.overview }}
           </p>
           <a
             href="#"
-            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none dark:bg-red-600"
+            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg focus:ring-4 focus:outline-none"
           >
             Lire plus
             <svg
