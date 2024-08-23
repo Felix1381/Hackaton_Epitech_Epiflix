@@ -1,13 +1,13 @@
 <template>
-  <div class="bg-black-500 w-screen h-screen">
+  <div class="w-screen h-screen bg-black-500">
     <router-link :to="{ path: '/' }" custom v-slot="{ navigate }">
       <a href=""
         ><img class="p-12" src="../assets/Logo.webp" alt="" @click="navigate"
       /></a>
     </router-link>
-    <div class="flex justify-center p-16 gap-8">
+    <div class="flex justify-center gap-8 p-16">
       <img
-        width="920"
+        width="820"
         height="450"
         class="rounded-t-lg"
         :src="`${this.imagePath}${movieStore.movie.backdrop_path}`"
@@ -31,13 +31,11 @@
         Your browser does not support HTML video.
       </video> -->
 
-      <div class="flex flex-col justify-between p-4 leading-normal w-1/2">
-        <h5
-          class="mb-2 text-5xl font-bold tracking-tight text-gray-900 dark:text-white"
-        >
+      <div class="flex flex-col justify-between w-1/2 p-4 leading-normal">
+        <h5 class="mb-2 text-5xl font-bold tracking-tight text-[red]">
           {{ movieStore.movie.title }}
         </h5>
-        <p class="mb-3 text-white-700 dark:text-white text-xl">
+        <p class="mb-3 text-xl text-white-700 dark:text-white">
           <!-- La Reine du Sud est un thriller dramatique inspiré du roman de Arturo
           Pérez-Reverte. L'histoire suit Teresa Mendoza, une jeune femme
           mexicaine qui, après la mort de son compagnon impliqué dans le trafic
@@ -47,7 +45,7 @@
           respectées du narcotrafic. -->
           {{ movieStore.movie.overview }}
         </p>
-        <p class="mb-3 text-white-700 dark:text-white text-xl">
+        <p class="mb-3 text-xl text-white-700 dark:text-white">
           Date de sortie: {{ movieStore.movie.release_date }}
         </p>
         <svg
@@ -81,13 +79,13 @@
         </svg>
       </div>
     </div>
-    <p class="flex justify-center text-white m-4 text-2xl">
+    <p class="flex justify-center m-4 text-2xl text-white">
       Quelques avis de nos utilisateurs
     </p>
     <div class="flex justify-center m-2">
       <a
         href="#"
-        class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-white-800 dark:border-gray-700 dark:withe:bg-gray-700 m-2"
+        class="block max-w-sm p-6 m-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-white-800 dark:border-gray-700 dark:withe:bg-gray-700"
       >
         <h5
           class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black"
@@ -103,7 +101,7 @@
       </a>
       <a
         href="#"
-        class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-white-800 dark:border-gray-700 dark:withe:bg-gray-700 m-2"
+        class="block max-w-sm p-6 m-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-white-800 dark:border-gray-700 dark:withe:bg-gray-700"
       >
         <h5
           class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black"
@@ -119,7 +117,7 @@
       </a>
       <a
         href="#"
-        class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-white-800 dark:border-gray-700 dark:withe:bg-gray-700 m-2"
+        class="block max-w-sm p-6 m-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-white-800 dark:border-gray-700 dark:withe:bg-gray-700"
       >
         <h5
           class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black"

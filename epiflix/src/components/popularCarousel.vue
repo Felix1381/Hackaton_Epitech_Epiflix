@@ -1,27 +1,33 @@
 <template>
-  <div class="flex flex-col bg-black ml-0 p-auto">
+  <div class="flex flex-col ml-0 bg-black p-auto">
     <h1
-      class="flex py-5 lg:px-0 md:px-10 px-0 lg:mx-0 md:mx-20 mx-0 font-bold text-4xl text-white"
+      class="flex px-0 py-5 mx-0 text-4xl font-bold text-white lg:px-0 md:px-10 lg:mx-0 md:mx-20"
     >
       Films mieux notés
     </h1>
-    <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
+    <div class="flex pb-10 overflow-x-scroll hide-scroll-bar">
       <div
-        class="flex flex-nowrap lg:ml-0 md:ml-20 ml-0"
+        class="flex ml-0 flex-nowrap lg:ml-0 md:ml-20"
         v-for="(movie, i) in movieStore.moviesTopRated"
         :key="i"
       >
         <div class="inline-block px-3">
           <div
-            class="w-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"
+            class="w-64 max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out bg-white rounded-lg shadow-md hover:shadow-xl"
           >
-            <a v-if="movie.backdrop_path" href="#">
-              <img
-                class="rounded-t-lg object-fill"
-                :src="`${this.imagePath}${movie.backdrop_path}`"
-                alt=""
-              />
-            </a>
+            <router-link
+              :to="{ path: '/details/' + movie.id }"
+              custom
+              v-slot="{ navigate }"
+            >
+              <a v-if="movie.backdrop_path" @click="navigate">
+                <img
+                  class="object-fill rounded-t-lg"
+                  :src="`${this.imagePath}${movie.backdrop_path}`"
+                  alt=""
+                />
+              </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -29,29 +35,35 @@
   </div>
 
   <!-- Films mieux notés -->
-  <div class="flex flex-col bg-black ml-0 p-auto">
+  <div class="flex flex-col ml-0 bg-black p-auto">
     <h1
-      class="flex py-5 lg:px-0 md:px-10 px-0 lg:mx-0 md:mx-20 mx-0 font-bold text-4xl text-white"
+      class="flex px-0 py-5 mx-0 text-4xl font-bold text-white lg:px-0 md:px-10 lg:mx-0 md:mx-20"
     >
       Films Tendances
     </h1>
-    <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
+    <div class="flex pb-10 overflow-x-scroll hide-scroll-bar">
       <div
-        class="flex flex-nowrap lg:ml-0 md:ml-20 ml-0"
+        class="flex ml-0 flex-nowrap lg:ml-0 md:ml-20"
         v-for="(movie, i) in movieStore.moviesRecents"
         :key="i"
       >
         <div class="inline-block px-3">
           <div
-            class="w-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"
+            class="w-64 max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out bg-white rounded-lg shadow-md hover:shadow-xl"
           >
-            <a v-if="movie.backdrop_path" href="#">
-              <img
-                class="rounded-t-lg object-fill"
-                :src="`${this.imagePath}${movie.backdrop_path}`"
-                alt=""
-              />
-            </a>
+            <router-link
+              :to="{ path: '/details/' + movie.id }"
+              custom
+              v-slot="{ navigate }"
+            >
+              <a v-if="movie.backdrop_path" @click="navigate">
+                <img
+                  class="object-fill rounded-t-lg"
+                  :src="`${this.imagePath}${movie.backdrop_path}`"
+                  alt=""
+                />
+              </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -59,29 +71,35 @@
   </div>
 
   <!-- Populaires -->
-  <div class="flex flex-col bg-black ml-0 p-auto">
+  <div class="flex flex-col ml-0 bg-black p-auto">
     <h1
-      class="flex py-5 lg:px-0 md:px-10 px-0 lg:mx-0 md:mx-20 mx-0 font-bold text-4xl text-white"
+      class="flex px-0 py-5 mx-0 text-4xl font-bold text-white lg:px-0 md:px-10 lg:mx-0 md:mx-20"
     >
       Films Populaires
     </h1>
-    <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
+    <div class="flex pb-10 overflow-x-scroll hide-scroll-bar">
       <div
-        class="flex flex-nowrap lg:ml-0 md:ml-20 ml-0"
+        class="flex ml-0 flex-nowrap lg:ml-0 md:ml-20"
         v-for="(movie, i) in movieStore.moviesPopular"
         :key="i"
       >
         <div class="inline-block px-3">
           <div
-            class="w-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"
+            class="w-64 max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out bg-white rounded-lg shadow-md hover:shadow-xl"
           >
-            <a v-if="movie.backdrop_path" href="#">
-              <img
-                class="rounded-t-lg object-fill"
-                :src="`${this.imagePath}${movie.backdrop_path}`"
-                alt=""
-              />
-            </a>
+            <router-link
+              :to="{ path: '/details/' + movie.id }"
+              custom
+              v-slot="{ navigate }"
+            >
+              <a v-if="movie.backdrop_path" @click="navigate">
+                <img
+                  class="object-fill rounded-t-lg"
+                  :src="`${this.imagePath}${movie.backdrop_path}`"
+                  alt=""
+                />
+              </a>
+            </router-link>
           </div>
         </div>
       </div>

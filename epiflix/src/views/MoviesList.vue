@@ -68,7 +68,7 @@
         class="py-3.5 mb-2 text-sm font-medium text-white border-collapse border border-[red] bg-transparent rounded-lg px-16 me-2 my-2"
         :class="{
           'py-3.5 mb-2 text-sm font-medium border-collapse text-white border border-[red] rounded-lg px-16 me-2 my-2': true,
-          'bg-[red] text-white': movieStore.selectedGenre === genre.id, // Style pour le genre sélectionné
+          'bg-red-700 text-white': movieStore.selectedGenre === genre.id, // Style pour le genre sélectionné
           'bg-transparent': movieStore.selectedGenre !== genre.id, // Style pour les autres genres
         }"
       >
