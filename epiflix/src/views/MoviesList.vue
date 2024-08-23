@@ -3,6 +3,7 @@
     <button @click="this.$router.push('/')">
       <img src="../assets/Logo.webp" alt="" srcset="" />
     </button>
+
     <div class="mt-10">
       <form class="max-w-md mx-auto" @submit.prevent>
         <div class="flex">
