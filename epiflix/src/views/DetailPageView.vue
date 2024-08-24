@@ -138,7 +138,7 @@
 import { useMovieStore } from "@/store/movie";
 import { onMounted } from "vue";
 import { useRoute } from "vue-router";
-import DetailPageView from "@/views/DetaiPageView.vue";
+import DetailPageView from "@/views/DetailPageView.vue";
 export default {
   name: "DetaiPageView",
   component: {
